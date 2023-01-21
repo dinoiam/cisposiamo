@@ -108,6 +108,7 @@
   padding: var(--padding-ps);
   font-size: var(--size-ps);
   text-align: center;
+  opacity: 0;
 }
 
 .michele-path,

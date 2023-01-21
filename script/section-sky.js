@@ -1,6 +1,16 @@
 window.addEventListener("load", function () {
-  const windowHeight = window.innerHeight;
-  const windowWidth = window.innerWidth;
+  let windowHeight = window.innerHeight;
+  let windowWidth = window.innerWidth;
+  function resize() {
+    windowWidth = window.innerWidth;
+    windowHeight = window.innerHeight;
+    console.log(windowHeight);
+    console.log(windowWidth);
+  }
+
+  ScrollTrigger.addEventListener("refreshInit", resize);
+  resize();
+
   let sun = gsap.timeline();
   let sky = gsap.timeline();
   let starsAnimation = gsap.timeline();
@@ -15,17 +25,19 @@ window.addEventListener("load", function () {
 
   ScrollTrigger.create({
     animation: sun,
-    trigger: ".scrollElement",
+    trigger: ".section-sky",
     start: "top top",
-    end: windowHeight,
+    end: "bottom top",
     scrub: 3,
+    invalidateOnRefresh: true,
   });
 
   ScrollTrigger.create({
     animation: sky,
-    trigger: ".scrollElement",
+    trigger: ".section-sky",
+    endTrigger: ".section-sky__intro-label",
     start: "top top",
-    end: windowHeight / 2,
+    end: "bottom top",
     scrub: 3,
   });
 
@@ -44,7 +56,7 @@ window.addEventListener("load", function () {
     },
   });
 
-  sun.to(".section-sky__sun", { y: windowHeight, x: windowWidth });
+  sun.to(".section-sky__sun", { y: () => windowHeight, x: () => windowWidth });
 
   sky
     .from(".section-sky", { backgroundColor: "#87c6d8" })
@@ -55,8 +67,6 @@ window.addEventListener("load", function () {
     .to(".section-sky", { backgroundColor: "#7b4567" }, ">");
 
   window.addEventListener("scroll", (event) => {
-    // const windowHeight = window.innerHeight;
-
     let value = window.scrollY;
     // const percentage = (value * 100) / windowHeight;
 

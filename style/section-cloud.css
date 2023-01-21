@@ -10,11 +10,11 @@
   --dash-array: 1257;
 }
 
-@media screen and (min-width: 768px) and (min-height: 768px) {
+@media screen and (min-width: 768px) {
   .section-cloud {
-    --size: 3.5rem;
-    --padding-section: 5rem 0 0;
-    --padding-plane: 0 4rem;
+    --size: 2rem;
+    --padding-section: 3rem;
+    --padding-plane: 4rem 0;
   }
 }
 
