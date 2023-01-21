@@ -1,14 +1,14 @@
 /* SECTION SAND */
 
 .section-sand {
-  --size: 1.5rem;
+  --size: 1.7rem;
   --size-ps: 1rem;
-  --size-maps-link: 1.2rem;
+  --size-maps-link: 1rem;
   --size-svg-names: 12rem;
   --size-svg-ampersand: 2rem;
   --padding-box: 4rem;
   --padding-info: 2rem;
-  --padding-section: 3rem 1rem 3rem;
+  --padding-section: 3rem 2rem 3rem;
   --padding-ps: 0;
   --color-sand: #fef1e5;
   --color-text: #074467;
@@ -64,6 +64,7 @@
 }
 .section-sand__maps-link {
   font-size: var(--size-maps-link);
+  color: var(--color-text);
 }
 
 .section-sand__eat {
