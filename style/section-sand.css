@@ -56,15 +56,31 @@
   align-items: center;
   padding-bottom: var(--padding-box);
 }
+
 .section-sand__where {
   text-align: center;
   padding-bottom: var(--padding-info);
   opacity: 0;
   transform: translateY(-100%);
 }
+
 .section-sand__maps-link {
   font-size: var(--size-maps-link);
   color: var(--color-text);
+  position: relative;
+}
+.section-sand__maps-link p {
+  position: relative;
+  margin-top: 0.2rem;
+  line-height: 1.4rem;
+}
+
+.section-sand__maps-link svg {
+  fill: var(--color-text);
+  position: absolute;
+  bottom: 0;
+  margin-left: 0.4rem;
+  width: 1.2rem;
 }
 
 .section-sand__eat {

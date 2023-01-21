@@ -125,7 +125,11 @@ window.addEventListener("load", function () {
       },
       "sign"
     )
-    .to(".section-sand__ps", {
-      opacity: 1,
-    });
+    .to(
+      ".section-sand__ps",
+      {
+        opacity: 1,
+      },
+      "<50%"
+    );
 });

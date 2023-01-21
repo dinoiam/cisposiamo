@@ -1,16 +1,4 @@
 window.addEventListener("load", function () {
-  let windowHeight = window.innerHeight;
-  let windowWidth = window.innerWidth;
-  function resize() {
-    windowWidth = window.innerWidth;
-    windowHeight = window.innerHeight;
-    console.log(windowHeight);
-    console.log(windowWidth);
-  }
-
-  ScrollTrigger.addEventListener("refreshInit", resize);
-  resize();
-
   let sun = gsap.timeline();
   let sky = gsap.timeline();
   let starsAnimation = gsap.timeline();
@@ -26,6 +14,7 @@ window.addEventListener("load", function () {
   ScrollTrigger.create({
     animation: sun,
     trigger: ".section-sky",
+    endTrigger: ".section-sky__intro-label",
     start: "top top",
     end: "bottom top",
     scrub: 3,
@@ -45,7 +34,8 @@ window.addEventListener("load", function () {
     animation: starsAnimation,
     trigger: ".section-sky__intro-label",
     start: "top top",
-    endTrigger: "footer",
+    endTrigger: ".section-sand__info",
+    end: "bottom top",
     scrub: 3,
     onToggle: ({ isActive }) => {
       stars.forEach((star) => {
@@ -56,7 +46,9 @@ window.addEventListener("load", function () {
     },
   });
 
-  sun.to(".section-sky__sun", { y: () => windowHeight, x: () => windowWidth });
+  sun.to(".section-sky__sun", {
+    transform: "translate(calc(100vw - 200%), calc(100vh - 200%))",
+  });
 
   sky
     .from(".section-sky", { backgroundColor: "#87c6d8" })
@@ -66,22 +58,23 @@ window.addEventListener("load", function () {
     .to(".section-sky", { backgroundColor: "#fe7b81" }, ">")
     .to(".section-sky", { backgroundColor: "#7b4567" }, ">");
 
-  window.addEventListener("scroll", (event) => {
-    let value = window.scrollY;
-    // const percentage = (value * 100) / windowHeight;
+  window.addEventListener(
+    "scroll",
+    () => {
+      let value = window.scrollY;
+      if (value > 10) {
+        rapidLink.style.opacity = 0;
+        rapidLink.style.pointerEvents = "none";
+      } else {
+        rapidLink.style.opacity = 1;
+        rapidLink.style.pointerEvents = "all";
+      }
 
-    //   const y = value;
-    if (value > 10) {
-      rapidLink.style.opacity = 0;
-      rapidLink.style.pointerEvents = "none";
-    } else {
-      rapidLink.style.opacity = 1;
-      rapidLink.style.pointerEvents = "all";
-    }
-
-    wave1.style.backgroundPositionX = 400 + value * 4 + "px";
-    wave2.style.backgroundPositionX = 300 + value * -4 + "px";
-    wave3.style.backgroundPositionX = 200 + value * 2 + "px";
-    wave4.style.backgroundPositionX = 100 + value * -2 + "px";
-  });
+      wave1.style.backgroundPositionX = 400 + value * 4 + "px";
+      wave2.style.backgroundPositionX = 300 + value * -4 + "px";
+      wave3.style.backgroundPositionX = 200 + value * 2 + "px";
+      wave4.style.backgroundPositionX = 100 + value * -2 + "px";
+    },
+    { passive: true }
+  );
 });

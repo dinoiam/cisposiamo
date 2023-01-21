@@ -3,7 +3,7 @@ window.addEventListener("load", function () {
   ScrollTrigger.create({
     animation: plane,
     trigger: "#text1849",
-    endTrigger: ".section-cloud__gift-info5",
+    endTrigger: ".section-cloud__gift-info",
     start: "bottom bottom",
     end: "bottom bottom",
     scrub: 2,
