@@ -47,7 +47,8 @@ window.addEventListener("load", function () {
   });
 
   sun.to(".section-sky__sun", {
-    transform: "translate(calc(100vw - 200%), calc(100vh - 200%))",
+    x: this.window.innerWidth,
+    y: this.window.innerHeight,
   });
 
   sky
