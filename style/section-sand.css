@@ -85,20 +85,47 @@
 
 .section-sand__eat {
   opacity: 0;
-  padding-bottom: var(--padding-info);
+  margin-bottom: var(--padding-info);
   transform: translateX(50%);
   align-self: flex-end;
+  display: flex;
+  align-items: center;
 }
+.section-sand__eat svg {
+  width: 30px;
+  fill: var(--color-text);
+  margin-right: 0.4rem;
+}
+
 .section-sand__dance {
   opacity: 0;
   transform: scale(0);
   text-align: center;
+  display: flex;
+  align-items: center;
 }
+
+.section-sand__dance svg {
+  width: 45px;
+  height: 45px;
+  fill: var(--color-text);
+  margin-left: 0.4rem;
+}
+
 .section-sand__yes {
   opacity: 0;
-  padding-bottom: var(--padding-info);
+  margin-bottom: var(--padding-info);
   transform: translateX(-50%);
   align-self: flex-start;
+  display: flex;
+  align-items: center;
+}
+
+.section-sand__yes svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--color-text);
+  margin-left: 0.4rem;
 }
 
 /* SIGNATURES */
