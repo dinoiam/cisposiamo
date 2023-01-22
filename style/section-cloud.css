@@ -83,7 +83,7 @@
 }
 
 .section-cloud__plane-wrapper svg .dashed {
-  stroke-dasharray: 10;
+  stroke-dasharray: 5;
 }
 
 .section-cloud__plane-wrapper svg .path {
