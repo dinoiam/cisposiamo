@@ -1,15 +1,16 @@
 window.addEventListener("load", function () {
   let sun = gsap.timeline();
   let sky = gsap.timeline();
+  let waves = gsap.timeline();
   let starsAnimation = gsap.timeline();
-  //   let rapidLink = gsap.timeline();
-  const wave1 = document.querySelector(".section-sky__wave-1");
-  const wave2 = document.querySelector(".section-sky__wave-2");
-  const wave3 = document.querySelector(".section-sky__wave-3");
-  const wave4 = document.querySelector(".section-sky__wave-4");
+  let height = this.window.innerHeight;
+  let width = this.window.innerWidth;
 
   const stars = document.querySelectorAll(".section-sky__star");
-  const rapidLink = document.querySelector(".section-sky__rapid-link");
+
+  ScrollTrigger.config({
+    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load", // notice "resize" isn't in the list
+  });
 
   ScrollTrigger.create({
     animation: sun,
@@ -18,7 +19,17 @@ window.addEventListener("load", function () {
     start: "top top",
     end: "bottom top",
     scrub: 3,
-    invalidateOnRefresh: true,
+    // invalidateOnRefresh: true,
+  });
+
+  ScrollTrigger.create({
+    animation: waves,
+    trigger: ".section-sky",
+    endTrigger: ".section-sky__wave-1",
+    start: "top top",
+    end: "top top",
+    scrub: 3,
+    // invalidateOnRefresh: true,
   });
 
   ScrollTrigger.create({
@@ -47,8 +58,8 @@ window.addEventListener("load", function () {
   });
 
   sun.to(".section-sky__sun", {
-    x: this.window.innerWidth,
-    y: this.window.innerHeight,
+    x: width,
+    y: height,
   });
 
   sky
@@ -59,23 +70,26 @@ window.addEventListener("load", function () {
     .to(".section-sky", { backgroundColor: "#fe7b81" }, ">")
     .to(".section-sky", { backgroundColor: "#7b4567" }, ">");
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      let value = window.scrollY;
-      if (value > 10) {
-        rapidLink.style.opacity = 0;
-        rapidLink.style.pointerEvents = "none";
-      } else {
-        rapidLink.style.opacity = 1;
-        rapidLink.style.pointerEvents = "all";
-      }
-
-      wave1.style.backgroundPositionX = 400 + value * 4 + "px";
-      wave2.style.backgroundPositionX = 300 + value * -4 + "px";
-      wave3.style.backgroundPositionX = 200 + value * 2 + "px";
-      wave4.style.backgroundPositionX = 100 + value * -2 + "px";
-    },
-    { passive: true }
-  );
+  waves
+    .add("waves")
+    .to(
+      ".section-sky__wave-1",
+      { backgroundPosition: `${height + 400 * 4}px 0` },
+      "waves"
+    )
+    .to(
+      ".section-sky__wave-2",
+      { backgroundPosition: `${height + 300 * -4}px 0` },
+      "waves"
+    )
+    .to(
+      ".section-sky__wave-3",
+      { backgroundPosition: `${height + 200 * 2}px 0` },
+      "waves"
+    )
+    .to(
+      ".section-sky__wave-4",
+      { backgroundPosition: `${height + 100 * -2}px 0` },
+      "waves"
+    );
 });

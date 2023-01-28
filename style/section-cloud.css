@@ -47,7 +47,7 @@
   background-color: var(--color-sand);
 }
 
-.section-cloud__divider svg {
+.section-cloud__divider img {
   z-index: 1;
   position: relative;
   display: block;

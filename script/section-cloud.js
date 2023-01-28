@@ -1,5 +1,10 @@
 window.addEventListener("load", function () {
   let plane = gsap.timeline();
+
+  ScrollTrigger.config({
+    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load", // notice "resize" isn't in the list
+  });
+
   ScrollTrigger.create({
     animation: plane,
     trigger: "#text1849",

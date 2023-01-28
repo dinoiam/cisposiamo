@@ -1,6 +1,10 @@
 window.addEventListener("load", function () {
   let infos = gsap.timeline();
 
+  ScrollTrigger.config({
+    autoRefreshEvents: "visibilitychange,DOMContentLoaded,load", // notice "resize" isn't in the list
+  });
+
   ScrollTrigger.create({
     animation: infos,
     trigger: ".section-sky__intro-label",
