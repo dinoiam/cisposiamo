@@ -15,13 +15,13 @@ window.addEventListener("load", function () {
   });
 
   infos
-    .to(".section-sand__where", { y: 0, opacity: "1", duration: 1 })
+    .to(".section-sand__where", { y: 0, opacity: "1" })
     .to(".section-sand__yes", {
-      transform: "none",
+      x: 0,
       opacity: "1",
     })
     .to(".section-sand__eat", {
-      transform: "none",
+      x: 0,
       opacity: "1",
     })
     .to(".section-sand__dance", {
